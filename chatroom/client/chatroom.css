@@ -1,6 +1,11 @@
+@font-face {
+  font-family: myFont;
+  src: url('src/jf-openhuninn-1.1.ttf');
+}
 html {
-  font-family: monospace;
-  font-size: 2vmin;
+  font-family: myFont;
+  font-weight: 300;
+  font-size: 1.8vmin;
 }
 /* show chatroom and chatroom button if screen is big enough */
 @media (min-width: 800px) and (min-height: 400px) {

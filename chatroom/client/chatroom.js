@@ -138,8 +138,7 @@ function updateMessageToChatroom(messagesRecord) {
     for (var j = messagesRecord[i].length - 1; j >= 0; j--) {
       var sender = messagesRecord[i][j]['sender'];
       var message = messagesRecord[i][j]['message'];
-      var msgDate = new Date(Date.parse(messagesRecord[i][j]['messageDate']));
-      msgDate = `${msgDate.getFullYear()}/${msgDate.getMonth()}/${msgDate.getDate()} ${msgDate.getHours()}:${msgDate.getMinutes()}:${msgDate.getSeconds()}`
+      var msgDate = formatDate(new Date(Date.parse(messagesRecord[i][j]['messageDate'])));
       // 根據傳送者決定外觀，System是1
       var chatBubbleClass = sender > 1 ? 'message_bubble_A' : 'message_bubble_B';
       var chatBubble = $(`
@@ -151,4 +150,24 @@ function updateMessageToChatroom(messagesRecord) {
       $(".message_div").append(chatBubble);
     }
   }
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return (
+    [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-') +
+    ' ' +
+    [
+      padTo2Digits(date.getHours()),
+      padTo2Digits(date.getMinutes()),
+      padTo2Digits(date.getSeconds()),
+    ].join(':')
+  );
 }
