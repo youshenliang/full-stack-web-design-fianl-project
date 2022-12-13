@@ -2,11 +2,13 @@
 
 <head>
     <meta charset="utf-8">
+    
+    <!-- 引入 font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- 引入 jQuery -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -36,16 +38,16 @@
 
         <div class="inputDiv">
             <i class="fa-solid fa-fw fa-lock"></i>
-            <input type="password" id="confirmpwdBox" placeholder="確認密碼 (8~20位英數字)" id="confirmPasswordBox" />
+            <input type="password" id="confirmpwdBox" placeholder="確認密碼 (8~20位英數字)"  />
         </div>
 
         <div class="inputDiv">
             <i class="fa-solid fa-fw fa-envelope"></i>
-            <input type="email" id="mailBox" placeholder="電子郵件信箱" id="confirmPasswordBox" />
+            <input type="email" id="mailBox" placeholder="電子郵件信箱"  />
         </div>
         <div class="inputDiv">
             <i class="fa-solid fa-fw fa-venus-mars"></i>
-            <input list="gender" id="genderBox" placeholder="性別" id="confirmPasswordBox" />
+            <input list="gender" id="genderBox" placeholder="性別" />
             <datalist id="gender">
                 <option value="男性"></option>
                 <option value="女性"></option>
@@ -54,15 +56,14 @@
         </div>
         <div class="inputDiv">
             <i class="fa-solid fa-fw fa-cake-candles"></i>
-            <input type="text" id="birthdayBox" placeholder="生日" id="confirmPasswordBox" />
+            <input type="date" id="birthdayBox" placeholder="生日"  />
         </div>
         <div class="inputDiv">
             <i class="fa-solid fa-fw fa-mobile-screen-button"></i>
-            <input type="text" id="phoneBox" placeholder="電話號碼 (09XX-XXXXXX)" id="confirmPasswordBox" />
+            <input type="text" id="phoneBox" placeholder="電話號碼 (09XX-XXXXXX)"  />
         </div>
         <input type="button" id="btnRegister" value="加入會員" />
         <input type="button" id="btnLogin" value="已經是會員了嗎？馬上登入" />
-    </div>
     </div>
 </body>
 

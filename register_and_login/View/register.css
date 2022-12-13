@@ -58,7 +58,7 @@ body {
 input {
     width: 85%;
     outline: none;
-    font-family: 'jf-openhuninn', FontAwesome;
+    font-family: 'jf-openhuninn';
     font-size: 2.5rem;
     color: #444444;
     border: none;
