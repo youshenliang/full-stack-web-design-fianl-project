@@ -75,8 +75,11 @@ i {
 }
 
 input[type="button"] {
+    width: 80%;
+    height: 5rem;
     border-radius: 2rem;
     padding: 1rem;
+    margin-left: 0.5rem;
 }
 
 #btnRegister {
@@ -89,6 +92,22 @@ input[type="button"] {
 #btnRegister:hover {
     background-color: var(--darker-primary-color);
     color: white;
+}
+
+input[type="date"] {
+    position: relative;
+    margin-left: -1.75rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
 }
 
 #btnLogin {
@@ -117,4 +136,5 @@ input[type="button"] {
 .swal2-popup {
     font-family: 'jf-openhuninn';
     font-size: 2.5rem !important;
+    border-radius: 2rem !important;
 }

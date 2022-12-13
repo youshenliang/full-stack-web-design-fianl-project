@@ -13,8 +13,14 @@
 <body>
     <div class="loginDiv">
         <t1> LOGIN </t1>
-        <input type="text" id="usernameBox" placeholder="&#xF007; 使用者名稱" id="usernameBox" />
-        <input type="password" id="pwdBox" placeholder="&#xF023; 密碼" id="passwordBox" />
+        <div class="inputDiv">
+            <i class="fa-solid fa-fw fa-user"></i>
+            <input type="text" id="usernameBox" placeholder="使用者名稱" id="usernameBox" />
+        </div>
+        <div class="inputDiv">
+            <i class="fa-solid fa-fw fa-lock"></i>
+            <input type="password" id="pwdBox" placeholder="密碼 (8~20位英數字)" id="passwordBox" />
+        </div>
         <input type="button" id="btnLogin" value="登入" />
         <div class="divBottomBtns">
             <input type="button" id="btnForgetPWD" value="忘記密碼" />

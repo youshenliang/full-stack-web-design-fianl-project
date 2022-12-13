@@ -34,26 +34,51 @@ body {
     width: var(--outerDiv-width);
     height: var(--outerDiv-height);
     border-radius: 2rem;
-    padding: 3.5rem 1rem 3.5rem 1rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: white;
     position: relative;
     box-shadow: 0 0 var(--primary-color) 0.5rem;
 }
 
-input {
+.inputDiv {
     width: 80%;
-    font-family:Arial, FontAwesome;
-    margin-top: 2rem;
+    height: 5rem;
+    border: 1px solid #989898;
     border-radius: 2rem;
-    border: 0.1rem solid gray;
-    padding: 1rem 1.5rem;
-    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px;
+}
+
+input {
+    width: 85%;
     outline: none;
+    font-family: 'jf-openhuninn';
+    font-size: 2.5rem;
+    color: #444444;
+    border: none;
+    margin-left: -1rem;
+}
+
+input::placeholder {
+    color: #444444;
+}
+
+i {
+    padding: 2rem;
+    font-size: 2.5rem;
+}
+
+input[type="button"] {
+    width: 80%;
+    margin-left: 0.5rem;
+    border-radius: 2rem;
+    padding: 1rem;
 }
 
 #btnLogin {
@@ -73,6 +98,7 @@ input {
     color: var(--primary-color);
     padding: 0.2rem;
     border: none;
+    margin-bottom: 1.5rem;
 }
 
 #btnForgetPWD {
