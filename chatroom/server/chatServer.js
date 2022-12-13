@@ -19,6 +19,8 @@ app.use(cors({
 
 // 設定靜態檔案資料夾，這樣server回傳chatroom.htm這個檔案時才能連帶執行內部用相對路徑寫的.js檔
 app.use(express.static('../client'));
+app.use(express.static('../system'));
+app.use(express.static('../server/View'));
 
 // 設定Routes
 app.use('/', userRoutes);

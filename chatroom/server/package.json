@@ -5,7 +5,7 @@
   "main": "chatServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start1": "nodemon server.js"
+    "start": "nodemon chatServer.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,7 @@
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "socket.io": "^4.5.4"
-  },
+  }, 
   "devDependencies": {
     "nodemon": "^2.0.20"
   }

@@ -1,0 +1,93 @@
+@font-face {
+    font-family: jf-openhuninn;
+    src: url('./src/jf-openhuninn-1.1.ttf');
+}
+
+:root {
+    --outerDiv-width: 65vmin;
+    --outerDiv-height: 45vmin;
+    --primary-color: rgb(27, 92, 136);    
+    --darker-primary-color: rgb(22, 72, 105);    
+    font-size: 1vmin;
+}
+
+t1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--primary-color);
+    font-size: 5rem;
+    line-height: 7.5rem;
+    font-weight: bold;
+    margin-bottom: -1.5rem;
+}
+
+body {
+    background-image: url('./src/blob-scene-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginDiv {
+    width: var(--outerDiv-width);
+    height: var(--outerDiv-height);
+    border-radius: 2rem;
+    padding: 3.5rem 1rem 3.5rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 var(--primary-color) 0.5rem;
+}
+
+input {
+    width: 80%;
+    font-family:Arial, FontAwesome;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    border: 0.1rem solid gray;
+    padding: 1rem 1.5rem;
+    font-size: 2.5rem;
+    outline: none;
+}
+
+#btnLogin {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#btnLogin:hover {
+    background-color: var(--darker-primary-color);
+    color: white;
+}
+
+#btnForgetPWD, #btnRegister {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: 0.2rem;
+    border: none;
+}
+
+#btnForgetPWD {
+    width: auto;
+    text-align: start;
+}
+
+#btnRegister {
+    width: auto;
+    text-align: end;
+}
+
+.divBottomBtns {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

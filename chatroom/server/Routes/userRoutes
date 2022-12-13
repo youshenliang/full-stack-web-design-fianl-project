@@ -9,7 +9,7 @@ var urlencodeParser = bodyParser.urlencoded({extended: false});
 var USER_ID = -1;
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('client.htm'));
+    res.sendFile(path.resolve('View/register_and_login.htm'));
 })
 
 router.post('/', urlencodeParser, (req, res) => {
@@ -18,7 +18,8 @@ router.post('/', urlencodeParser, (req, res) => {
     userName = req.body.userName;
     userSQLModel.UserLoginQuery(userName).then((userID) => {
         USER_ID = userID;
-        if (userID > 0) res.redirect(301, `http://localhost:3000/chatroom?username=${userName}`);
+        if (userID == 1) res.redirect(301, `http://localhost:3000/system`);
+        else if (userID > 1) res.redirect(301, `http://localhost:3000/chatroom?username=${userName}`);
         else res.status(200).send(`新使用者${userName}註冊成功！請重新登入`);
     }).catch((err) => {
         console.log(`err when user login: ${err.message}`);
@@ -32,5 +33,10 @@ router.get('/chatroom', (req, res) => {
     if(USER_ID != -1) res.sendFile(path.resolve('../client/chatroom.htm'));
     else res.status(403).send("請先登入才能進入聊天室");
 })
+
+router.get('/system', (req, res) => {
+    res.status(200).sendFile(path.resolve('../system/system_chatroom.htm'));
+})
+ 
 
 module.exports = router;
