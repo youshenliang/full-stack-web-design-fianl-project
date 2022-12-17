@@ -1,0 +1,34 @@
+// 新增 chat database
+CREATE DATABASE chat; use chat;
+
+// 新增 user_list
+CREATE TABLE user_list (userID int not null AUTO_INCREMENT, userName varchar(20) not null, PRIMARY KEY(userID));
+
+// 新增 chat_record_0
+CREATE TABLE chat_record_0 (messageID int not null AUTO_INCREMENT, sender int not null, receiver int not null, message varchar(200) not null, messageDate datetime not null default now(), PRIMARY KEY(messageID));
+
+
+// 更改 chat_record_0 編碼為 utf8 4byte 才能儲存 emoji
+ALTER TABLE chat_record_0 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+// 複製出 chat_record_1 ~ chat_record_4
+CREATE TABLE chat_record_1 LIKE chat_record_0;
+CREATE TABLE chat_record_2 LIKE chat_record_0;
+CREATE TABLE chat_record_3 LIKE chat_record_0;
+CREATE TABLE chat_record_4 LIKE chat_record_0;
+
+// 更改 root 的密碼為 password 並刷新，以免 node.js 的 mysql 無法正常登入
+ALTER USER 'root'@'localhost' IDENTIFIED  WITH mysql_native_password BY 'password';
+flush privileges;
+
+所有指令如下，可一次複製貼上：
+CREATE DATABASE test2; use test2;
+CREATE TABLE user_list (userID int not null AUTO_INCREMENT, userName varchar(20) not null, PRIMARY KEY(userID));
+CREATE TABLE chat_record_0 (messageID int not null AUTO_INCREMENT, sender int not null, receiver int not null, message varchar(200) not null, messageDate datetime not null default now(), PRIMARY KEY(messageID));
+ALTER TABLE chat_record_0 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE TABLE chat_record_1 LIKE chat_record_0;
+CREATE TABLE chat_record_2 LIKE chat_record_0;
+CREATE TABLE chat_record_3 LIKE chat_record_0;
+CREATE TABLE chat_record_4 LIKE chat_record_0;
+ALTER USER 'root'@'localhost' IDENTIFIED  WITH mysql_native_password BY 'password';
+flush privileges;

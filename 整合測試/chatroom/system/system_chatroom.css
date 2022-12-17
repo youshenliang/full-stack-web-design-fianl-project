@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.div_userlist {
+    width: 30%;
+    height: 100%;
+    background-color: blanchedalmond;
+}
+
+.div_chatroom {
+    width: 70%;
+    height: 100%;
+    background-color: thistle;
+}

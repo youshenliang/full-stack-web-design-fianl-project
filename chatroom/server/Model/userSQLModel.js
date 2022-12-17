@@ -5,7 +5,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "password",
-    database: "chat",
+    database: "web",
     charset: 'utf8mb4'
 });
 
@@ -18,8 +18,8 @@ con.connect((err) => {
     console.log("connect to mysql successfully!");
 })
 
-const userSQLModel = {    
-    
+const userSQLModel = {
+
     UserLoginQuery: (userName) => {
         // 用Promise等待SQL查詢完再resolve
         return new Promise((resolve, reject) => {
