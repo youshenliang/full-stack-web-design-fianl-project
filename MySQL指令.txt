@@ -1,8 +1,8 @@
-// 新增 chat database
-CREATE DATABASE chat; use chat;
+// 新增 web database
+CREATE DATABASE web; use web;
 
-// 新增 user_list
-CREATE TABLE user_list (userID int not null AUTO_INCREMENT, userName varchar(20) not null, PRIMARY KEY(userID));
+// 新增 user_info
+CREATE TABLE user_info (userID int not null AUTO_INCREMENT, userName varchar(20) not null, userPWD varchar(64) not null, userEmail varchar(100) not null, userPhoneNumber varchar(11) not null, userGender varchar(5) not null, userBirthday date not null, PRIMARY KEY(userID));
 
 // 新增 chat_record_0
 CREATE TABLE chat_record_0 (messageID int not null AUTO_INCREMENT, sender int not null, receiver int not null, message varchar(200) not null, messageDate datetime not null default now(), PRIMARY KEY(messageID));
@@ -22,8 +22,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED  WITH mysql_native_password BY 'passwor
 flush privileges;
 
 所有指令如下，可一次複製貼上：
-CREATE DATABASE test2; use test2;
-CREATE TABLE user_list (userID int not null AUTO_INCREMENT, userName varchar(20) not null, PRIMARY KEY(userID));
+CREATE DATABASE web; use web;
+CREATE TABLE user_info (userID int not null AUTO_INCREMENT, userName varchar(20) not null, userPWD varchar(64) not null, userEmail varchar(100) not null, userPhoneNumber varchar(11) not null, userGender varchar(5) not null, userBirthday date not null, PRIMARY KEY(userID));
 CREATE TABLE chat_record_0 (messageID int not null AUTO_INCREMENT, sender int not null, receiver int not null, message varchar(200) not null, messageDate datetime not null default now(), PRIMARY KEY(messageID));
 ALTER TABLE chat_record_0 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE TABLE chat_record_1 LIKE chat_record_0;

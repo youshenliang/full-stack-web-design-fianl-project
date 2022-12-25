@@ -1,0 +1,236 @@
+@font-face {
+  font-family: myFont;
+  src: url('src/jf-openhuninn-1.1.ttf');
+}
+html {
+  font-family: myFont;
+  font-weight: 300;
+  font-size: 1.8vmin;
+}
+/* show chatroom and chatroom button if screen is big enough */
+@media (min-width: 800px) and (min-height: 400px) {
+  /* variables setting */
+  :root {
+    --btn_chatroom_size: 8vmin;
+    --chatroom_width: 55vmin;
+    --chatroom_height: 65vmin;
+    --chatroom_boxShadow: 0.2vmax 0.2vmax 0.5vmax 0.05vmax rgba(0, 0, 0, 0.25);
+    --chatroom_padding: 0px;
+    --chatroom_animation_duration: 0.5s;
+    --primary_color: rgb(27, 92, 136);
+    --secondary_color: rgb(22, 72, 105);
+  }
+
+  body {
+    
+  }
+
+  .btn_chatroom {
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+    width: var(--btn_chatroom_size);
+    height: var(--btn_chatroom_size);
+    margin: 3vmin;
+    background-image: url("./src/btn_chatroom.svg");
+    background-position: 0.3rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--primary_color);
+    box-shadow: var(--chatroom_boxShadow);
+    z-index: 999;
+  }
+
+  .btn_chatroom:hover {
+    background-color: var(--secondary_color);
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  #chatroom {
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    transform: scale(0);
+    background-color: #ffffff;
+    border-radius: 3vmin;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 3.5vmin;
+    margin-bottom: 13vmin;
+    box-shadow: var(--chatroom_boxShadow);
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  #chatroom_title_bar {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    border-radius: 3vmin 3vmin 0 0 ;
+    background-color: var(--primary_color);
+  }
+
+  #client_service_avatar {
+    width: 8%;
+    margin-right: 1%;
+    /*content: url('./src/customer_service_icon.png');*/
+    content: url('./src/customer-service-man-svgrepo-com.svg');
+  }
+
+  .message_div {
+    width: 100%;
+    height: 80%;
+    position: fixed;
+    bottom: 10%;
+    overflow-y: auto;  /* 讓div有scroll bar */
+    padding: 1rem;
+    font-size: 1rem;
+    color: black;
+    box-sizing: border-box; /* 讓div增加padding時也能保持原本大小 */
+  }
+
+  text {
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: gray;
+  }
+
+  /* 自己這方的message bubble */
+  .message_bubble_A {    
+    margin-top: 0.7rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .message_bubble_A > span {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary_color);
+    color: white;
+  }
+
+  /* 對方的message bubble */
+  .message_bubble_B {
+    margin-top: 0.7rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .message_bubble_B > span {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #EEEEEE;
+  }
+
+  .type_div {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 0.1rem solid gray;
+  }
+  
+  .type_area {
+    width: 70%;
+    height: 90%;
+    font-size: 0.85rem;
+    padding: 0.8rem 0;
+    margin-left: 0.5rem;
+    border: none;
+    outline: none;  /*關閉textarea獲得focus時會跳出的外框 */
+    resize: none;
+    overflow: hidden;  /* 關閉textarea的scroll bar */
+  }
+  
+  #lbl_upload {
+    cursor: pointer;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  #imgbtn_upload {
+    width: 2rem;
+  }
+
+  #btn_upload {
+    display: none;
+  } 
+
+  #chatroom.open {
+    animation: openChatroom var(--chatroom_animation_duration) forwards;
+  }
+
+  #chatroom.close {
+    animation: closeChatroom var(--chatroom_animation_duration) forwards;
+  }
+
+  @keyframes openChatroom {
+    0% {
+      width: 0px;
+      height: 0px;
+      padding: 0px;
+      margin-right: 5vmin;
+      margin-bottom: 5vmin;
+      transform: scale(0);
+    }
+
+    100% {
+      width: var(--chatroom_width);
+      height: var(--chatroom_height);
+      padding: var(--chatroom_padding);
+      margin-right: 3.5vmin;
+      margin-bottom: 13vmin;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes closeChatroom {
+    0% {
+      width: var(--chatroom_width);
+      height: var(--chatroom_height);
+      padding: var(--chatroom_padding);
+      margin-right: 3.5vmin;
+      margin-bottom: 13vmin;
+      transform: scale(1);
+    }
+
+    100% {
+      width: 0px;
+      height: 0px;
+      padding: 0px;
+      margin-right: 5vmin;
+      margin-bottom: 5vmin;
+      transform: scale(0);
+    }
+  }
+}
+
+
+/* hide chatroom if screen is too small */
+@media (max-width: 800px) or (max-height: 400px) {
+  .chatroom > *, .btn_chatroom {
+    transform: scale(0);
+  }
+}
