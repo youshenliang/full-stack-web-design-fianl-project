@@ -68,6 +68,7 @@ html {
     display: inline-flex;
     justify-content: space-between;
     flex-direction: column;
+    z-index: 999;
   }
 
   #chatroom_title_bar {
@@ -79,7 +80,14 @@ html {
     font-size: 2rem;
     color: white;
     border-radius: 3vmin 3vmin 0 0 ;
-    background-color: var(--primary_color);
+    background-color: var(--secondary_color);
+  }
+
+  #chatroom_title {
+    font-size: 2rem;
+    line-height: auto;
+    margin: 0px;
+    font-family: myFont;
   }
 
   #client_service_avatar {

@@ -1,68 +1,122 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+@font-face {
+    font-family: myFont;
+    src: url('src/jf-openhuninn-1.1.ttf');
+}
+
 /*載入Google字型*/
-html{
-    margin: 0; /*外矩值歸零*/
-    padding: 0; /*內矩值歸零*/
+html {
+    margin: 0;
+    /*外矩值歸零*/
+    padding: 0;
+    /*內矩值歸零*/
+    font-family: myFont;
+    font-weight: 300;
+    font-size: 1.8vmin;
 }
-body{
-    font-family: 'Noto Sans TC', sans-serif; /*字型*/
-    color: #2b2b2b; /*顏色*/
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    /*字型*/
+    color: #2b2b2b;
+    /*顏色*/
 }
-a, a:active, a:hover, a:link, a:visited {
-    text-decoration: none; /*取消連結底線*/
-    outline: none; /*取消按下時的藍色外框*/
-    color: #2b2b2b; /*顏色*/
+
+a,
+a:active,
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+    /*取消連結底線*/
+    outline: none;
+    /*取消按下時的藍色外框*/
+    color: #2b2b2b;
+    /*顏色*/
 }
-a:hover{
-    color: #999; /*顏色*/
+
+a:hover {
+    color: #999;
+    /*顏色*/
 }
 
 .mbtn:hover {
     color: #fff !important;
 }
 
-h2, .title-color{
-    color: #0099d1; /*顏色*/
+h2,
+.title-color {
+    color: #0099d1;
+    /*顏色*/
 }
+
 @media screen and (max-width: 768px) {
-    .navbar-brand img{
-        width: 60px; /*寬度*/
+    .navbar-brand img {
+        width: 60px;
+        /*寬度*/
     }
 }
-.product-categories > a{
-    transform: scale(1); /*變形-縮放-維持目前尺寸*/
-    transition: transform .4s ease-out; /*動畫過渡時間*/
+
+.product-categories>a {
+    transform: scale(1);
+    /*變形-縮放-維持目前尺寸*/
+    transition: transform .4s ease-out;
+    /*動畫過渡時間*/
 }
-.product-categories > a:hover{
-    transform: scale(1.02); /*變形-縮放-放大1.02倍*/
-    box-shadow: 4px 4px 10px #999; /*陰影*/
+
+.product-categories>a:hover {
+    transform: scale(1.02);
+    /*變形-縮放-放大1.02倍*/
+    box-shadow: 4px 4px 10px #999;
+    /*陰影*/
 }
-.map{
-    width: 100%; /*寬度*/
-    height: 300px; /*高度*/
+
+.map {
+    width: 100%;
+    /*寬度*/
+    height: 300px;
+    /*高度*/
 }
-.footer-menu{
-    display: block; /*區塊元素*/
-    list-style: none; /*清除符號樣式*/
-    padding: 0; /*內矩值歸零*/
-    margin: 0; /*外矩值歸零*/
+
+.footer-menu {
+    display: block;
+    /*區塊元素*/
+    list-style: none;
+    /*清除符號樣式*/
+    padding: 0;
+    /*內矩值歸零*/
+    margin: 0;
+    /*外矩值歸零*/
 }
-.footer-menu > li{
-    display: inline-block; /*行內元素*/
-    margin-right: 1rem; /*右方外矩*/
+
+.footer-menu>li {
+    display: inline-block;
+    /*行內元素*/
+    margin-right: 1rem;
+    /*右方外矩*/
 }
-.footer-menu > li > a{
-    color: #fff; /*顏色*/
-    padding: 1rem 0rem; /*上下內矩值為1rem，左右外矩值為0*/
+
+.footer-menu>li>a {
+    color: #fff;
+    /*顏色*/
+    padding: 1rem 0rem;
+    /*上下內矩值為1rem，左右外矩值為0*/
 }
-.footer-menu > li > a:hover{
-    color: #999; /*顏色*/
+
+.footer-menu>li>a:hover {
+    color: #999;
+    /*顏色*/
 }
+
 @media screen and (max-width: 768px) {
-    .send-btn{
-        width: 100%; /*寬度*/
+    .send-btn {
+        width: 100%;
+        /*寬度*/
     }
 }
-.page-content{
-    min-height: 700px; /*最小高度*/
+
+.page-content {
+    min-height: 700px;
+    /*最小高度*/
 }

@@ -1,7 +1,4 @@
-/* IIFE (Immediately Invoked Function Expression) function 自我調用function */
-/* 會自己執行 這邊用來產生聊天室的顯示介面 並先藏起來 等按下按鈕才會跳出 */
-
-var LOGIN_USER = "";
+var userID = "";
 var firsttimeOpenChatroom = 0;
 
 // 初始化及載入 socket.io
@@ -13,6 +10,8 @@ var messageRecord = [];
 var messageRecordAmount = 10;
 var messageRecordOffset = 0;
 
+/* IIFE (Immediately Invoked Function Expression) function 自我調用function */
+/* 會自己執行 這邊用來產生聊天室的顯示介面 並先藏起來 等按下按鈕才會跳出 */
 var chatroom_div = function test() {
   /* 動態產生聊天室按鈕並置於畫面右下角，方便import */
   var btn_chatroom = $("<button class='btn_chatroom' onclick='openChatroom()'> </button>");
@@ -23,7 +22,7 @@ var chatroom_div = function test() {
   var title_bar = $(`
     <div id='chatroom_title_bar'>
       <img id='client_service_avatar' />
-      <p> 客服系統 </p>
+      <p id='chatroom_title'> 客服系統 </p>
     </div>
   `);
 
@@ -64,7 +63,7 @@ var chatroom_div = function test() {
 
   // 根據cookie抓取目前登入的使用者
   // 用正規表示式撈出userID
-  LOGIN_USER = Cookies.get("userID").match(/^s:(.*)\..*$/)[1];
+  userID = Cookies.get("userID").match(/^s:(.*)\..*$/)[1];
 
   /* message_div 向上捲動至頂時動態載入更早前的聊天紀錄 */
   $(message_div).scroll(() => {
@@ -73,17 +72,18 @@ var chatroom_div = function test() {
       // 載入更早前的聊天紀錄
       var option = [messageRecordAmount, messageRecordOffset];  // amount offset;
       messageRecordOffset += messageRecordAmount;  // 更新offset
-      socket.emit('get_chat_record', option);
+      socket.emit('get_chat_record', userID, option);
     }
   })
 
 
-  socket.emit("user_login", LOGIN_USER);
+  socket.emit("user_login", userID);
   socket.on('get_chat_record', (chatRecord) => {
     if (chatRecord.length > 0) {
       messageRecord.push(chatRecord);
       updateMessageToChatroom(messageRecord);
     }
+    // 更新紀錄時(例如使用者傳送新訊息後)，跳轉到訊息底部
     if (firsttimeOpenChatroom < 2) $('#message_div').animate({scrollTop: $('#message_div').prop("scrollHeight")}, 500);
     firsttimeOpenChatroom = 2;
   })
@@ -99,7 +99,7 @@ var chatroom_div = function test() {
 
 function sendMessage() {
   var msg = $("#type_area").val();
-  socket.emit('new_message_from_client', msg);
+  socket.emit('new_message_from_client', userID, msg);
   console.log("send msg: ", msg);
   $("#type_area").val("");
 }
@@ -110,8 +110,9 @@ function openChatroom() {
   if ($("#chatroom").hasClass("open") && firsttimeOpenChatroom < 1) {
     var option = [messageRecordAmount, 0];  // amount offset;
     messageRecordOffset += messageRecordAmount;  // 更新offset
+    console.log("option", option);
     firsttimeOpenChatroom = 1;
-    socket.emit('get_chat_record', option);
+    socket.emit('get_chat_record', userID, option);
   }
 }
 

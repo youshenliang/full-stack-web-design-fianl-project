@@ -1,17 +1,152 @@
+* {
+    font-size: 2.5vmin;
+}
+
+:root {
+    --primary_color: rgb(27, 92, 136);
+    --secondary_color: rgb(22, 72, 105);
+}
+
 body {
     display: flex;
     flex-direction: row;
     margin: auto;
 }
 
+text {
+    font-size: 1.5rem;
+}
+
+i {
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #aaaaaa;
+}
+
+.userName {
+    display: inline-block;
+}
+
 .div_userlist {
-    width: 30%;
+    width: 20%;
     height: 100%;
-    background-color: blanchedalmond;
+    overflow: auto;
 }
 
 .div_chatroom {
-    width: 70%;
+    width: 80%;
     height: 100%;
-    background-color: thistle;
+    border-left: 0.1rem solid #DDDDDD;
+}
+
+.userChatroom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-bottom: 0.1rem solid #EEEEEE;
+}
+
+.userChatroom:hover {
+    background-color: #EEEEEE;
+}
+
+.userChatroom.selected {
+    background-color: #DDDDDD;
+}
+
+.message_div {
+    width: 99%;
+    height: 92%;
+    position: fixed;
+    bottom: 10%;
+    overflow-y: auto; /* 讓div有scroll bar */
+    padding: 1rem;
+    font-size: 1rem;
+    color: black;
+    box-sizing: border-box;
+    /* 讓div增加padding時也能保持原本大小 */
+}
+
+span {
+    display: inline-block;
+}
+
+.type_div {
+    width: 80%;
+    height: 10%;
+    position: fixed;
+    bottom: 0;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 0.1rem solid #DDDDDD;
+}
+
+.type_area {
+    width: 90%;
+    height: 80%;
+    font-size: 0.85rem;
+    padding: 0.75rem;
+    border: none;
+    outline: none;
+    /*關閉textarea獲得focus時會跳出的外框 */
+    resize: none;
+    overflow: hidden;
+    /* 關閉textarea的scroll bar */
+}
+
+#lbl_upload {
+    cursor: pointer;
+}
+
+#imgbtn_upload {
+    width: 2rem;
+}
+
+#btn_upload {
+    display: none;
+}
+
+/* 自己這方的message bubble */
+.message_bubble_A {
+    margin-top: 0.7rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.lbl_date {
+    font-size: 0.7rem;
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: #444444;
+}
+
+.message_bubble_A>span {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary_color);
+    color: white;
+}
+
+/* 對方的message bubble */
+.message_bubble_B {
+    margin-top: 0.7rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.message_bubble_B>span {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #EEEEEE;
 }

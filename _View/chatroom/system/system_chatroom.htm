@@ -6,6 +6,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src='./utils/emoji-picker-input-textarea/inputEmoji.js'></script>
+    <!-- 引入 font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script src="./system_chatroom.js"></script>
     <link rel="stylesheet" href="./system_chatroom.css" />
@@ -13,11 +17,59 @@
 
 <body>
     <div class="div_userlist">
-
+        <div class="userChatroom" id="1">
+            <lable for="1">
+                <text>user1</text>
+            </lable>
+            <i class="btn_removeChatroom fa-solid fa-xmark"></i>
+        </div>
+        <div class="userChatroom" id="2">
+            <lable for="2">
+                <text>user2</text>
+            </lable>
+            <i class="btn_removeChatroom fa-solid fa-xmark"></i>
+        </div>
+        <div class="userChatroom" id="3">
+            <lable for="3">
+                <text>user3</text>
+            </lable>
+            <i class="btn_removeChatroom fa-solid fa-xmark"></i>
+        </div>
+        <div class="userChatroom" id="4">
+            <lable for="4">
+                <text>user4</text>
+            </lable>
+            <i class="btn_removeChatroom fa-solid fa-xmark"></i>
+        </div>
+        <div class="userChatroom" id="5">
+            <lable for="5">
+                <text>user5</text>
+            </lable>
+            <i class="btn_removeChatroom fa-solid fa-xmark"></i>
+        </div>
     </div>
 
     <div class="div_chatroom">
-
+        <div class='message_div' id='message_div'>
+            <div class='message_bubble_B'>
+                <span> 測試訊息1 </span>
+                <text class="lbl_date"> 2022/12/17 </text>
+            </div>
+            <div class='message_bubble_A'>
+                <span> 測試訊息2 </span>
+                <text class="lbl_date"> 2022/12/17 </text>
+            </div>
+            
+        </div>
+        <div class="type_div">
+            <textarea name="" id="type_area" class="type_area" placeholder="輸入訊息..."></textarea>
+            <span>
+                <label for="btn_upload" id="lbl_upload">
+                    <img src="./src/upload-file.svg" alt="" id="imgbtn_upload">
+                </label>
+                <input type='file' id='btn_upload' />
+            </span>
+        </div>
     </div>
 </body>
 
