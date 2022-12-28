@@ -17,10 +17,10 @@ const socketModel = (server) => {
         })
 
         // 當client要求載入對話紀錄，則根據登入的使用者身分，抓取對話紀錄
-        socket.on('get_chat_record', (option) => {
+        socket.on('get_chat_record', (userID, option) => {
             var amount = option[0];
             var offset = option[1];
-            userSQLModel.ChatRecordQuery(USER_ID, offset, amount).then((chatRecord) => {
+            userSQLModel.ChatRecordQuery(userID, offset, amount).then((chatRecord) => {
                 io.emit('get_chat_record', chatRecord);
             }).catch((err) => {
                 console.log(`err when getting chat record: ${err.message}`);
@@ -29,11 +29,24 @@ const socketModel = (server) => {
         })
 
         // 當client端發送新訊息
-        socket.on('new_message_from_client', (message) => {
-            userSQLModel.AppendNewMessageQuery(USER_ID, 1, message).then((data) => {
+        socket.on('new_message_from_client', (userID, message) => {
+            userSQLModel.AppendNewMessageQuery(userID, 1, message).then((data) => {
                 console.log("Append: ", message);
-                userSQLModel.ChatRecordQuery(USER_ID, 0, 1).then((data) => {
+                userSQLModel.ChatRecordQuery(userID, 0, 1).then((data) => {
                     io.emit('new_message_from_client', data);
+                })
+            }).catch((err) => {
+                console.log(`err when appending message: ${err.message}`);
+                throw (err);
+            })
+        })
+
+        // 當system端發送新訊息
+        socket.on('new_message_from_system', (receiver, message) => {
+            userSQLModel.AppendNewMessageQuery(1, receiver, message).then((data) => {
+                console.log("Append: ", message);
+                userSQLModel.ChatRecordQuery(receiver, 0, 1).then((data) => {
+                    io.emit('new_message_from_system', data);
                 })
             }).catch((err) => {
                 console.log(`err when appending message: ${err.message}`);
