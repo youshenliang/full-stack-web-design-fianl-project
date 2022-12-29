@@ -84,16 +84,16 @@ var chatroom_div = function test() {
       updateMessageToChatroom(messageRecord);
     }
     // 更新紀錄時(例如使用者傳送新訊息後)，跳轉到訊息底部
-    if (firsttimeOpenChatroom < 2) $('#message_div').animate({scrollTop: $('#message_div').prop("scrollHeight")}, 500);
+    if (firsttimeOpenChatroom < 2) $('#message_div').animate({ scrollTop: $('#message_div').prop("scrollHeight") }, 500);
     firsttimeOpenChatroom = 2;
   })
 
   socket.on('new_message_from_client', (result) => {
-    if(result.length > 0) {
+    if (result.length > 0) {
       messageRecord.unshift(result);
       updateMessageToChatroom(messageRecord);
-      $('#message_div').animate({scrollTop: $('#message_div').prop("scrollHeight")}, 500);
-    } 
+      $('#message_div').animate({ scrollTop: $('#message_div').prop("scrollHeight") }, 500);
+    }
   })
 }();
 

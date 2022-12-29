@@ -5,6 +5,8 @@
 :root {
     --primary_color: rgb(27, 92, 136);
     --secondary_color: rgb(22, 72, 105);
+    --left-panel-size: 25%;
+    --right-panel-size: 75%;
 }
 
 body {
@@ -23,24 +25,33 @@ i {
     color: #aaaaaa;
 }
 
+#imgbtn_upload {
+    margin-left: 0.5rem;
+}
+
 .userName {
     display: inline-block;
 }
 
+.btn_removeChatroom {
+    margin-left: 0.5rem;
+}
+
 .div_userlist {
-    width: 20%;
+    width: var(--left-panel-size);
     height: 100%;
     overflow: auto;
 }
 
 .div_chatroom {
-    width: 80%;
+    width: var(--right-panel-size);
     height: 100%;
     border-left: 0.1rem solid #DDDDDD;
 }
 
 .userChatroom {
     display: flex;
+    word-break: break-all;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
@@ -58,7 +69,7 @@ i {
 }
 
 .message_div {
-    width: 99%;
+    width: var(--right-panel-size);
     height: 92%;
     position: fixed;
     bottom: 10%;
@@ -66,8 +77,7 @@ i {
     padding: 1rem;
     font-size: 1rem;
     color: black;
-    box-sizing: border-box;
-    /* 讓div增加padding時也能保持原本大小 */
+    box-sizing: border-box; /* 讓div增加padding時也能保持原本大小 */    
 }
 
 span {
@@ -75,8 +85,11 @@ span {
 }
 
 .type_div {
-    width: 80%;
+    width: var(--right-panel-size);
     height: 10%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;  /* 讓div增加padding時也能保持原本大小 */
     position: fixed;
     bottom: 0;
     display: inline-flex;
@@ -86,7 +99,7 @@ span {
 }
 
 .type_area {
-    width: 90%;
+    width: 100%;
     height: 80%;
     font-size: 0.85rem;
     padding: 0.75rem;
@@ -113,7 +126,7 @@ span {
 /* 自己這方的message bubble */
 .message_bubble_A {
     margin-top: 0.7rem;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -138,7 +151,7 @@ span {
 /* 對方的message bubble */
 .message_bubble_B {
     margin-top: 0.7rem;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

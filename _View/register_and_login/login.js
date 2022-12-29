@@ -70,6 +70,16 @@ $(document).ready(() => {
                             width: "50vw",
                             confirmButtonText: '確定',
                         })
+                    } else if (msg == "system") {
+                        Swal.fire({
+                            text: `歡迎回來，讓我們為您跳轉至後台管理頁面`,
+                            icon: "success",
+                            confirmButtonColor: "#1b5c88",
+                            width: "50vw",
+                            confirmButtonText: '確定'
+                        }).then((result) => {
+                            if(result.isConfirmed) window.location.href = "/system";
+                        })
                     }
                 },
                 error: (err) => {
