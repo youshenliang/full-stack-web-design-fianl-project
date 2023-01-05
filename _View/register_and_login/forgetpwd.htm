@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- 引入 font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <!-- 引入 toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- 引入 sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./forgetpwd.js"></script>
+    <link rel="stylesheet" href="./forgetpwd.css" />
+</head>
+
+<body>
+    <div class="loginDiv">
+        <t1> FORGET PASSWORD </t1>
+        <div class="inputDiv">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="text" id="mailBox" placeholder="請輸入您的電子郵件" id="usernameBox" />
+        </div>
+        <div class="captchaDiv">
+            <img class="captchaImage">
+            <input type="hidden" name="id" readonly="readonly" class="id">
+            <input name="captcha" id="captcha">
+            <button onclick="submit_captcha()"> 驗證 </button>
+        </div>
+        <input type="button" id="btnSendMail" value="發送驗證信件" />
+    </div>
+</body>
+
+</html>

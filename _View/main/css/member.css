@@ -1,0 +1,67 @@
+* {
+    font-size: 1vmin;
+}
+
+.inputDiv {
+    width: 30vw;
+    height: 3rem;
+    margin-top: 1.25rem;
+    border: 0.1rem solid #989898;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px;
+}
+
+input {
+    width: 100%;
+    height: 85%;
+    outline: none;
+    font-family: 'jf-openhuninn';
+    font-size: 1rem !important; 
+    color: #444444;
+    border: none;
+}
+
+input[disabled] {
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: #444444;
+}
+
+i:not(.userdrop, .fa-bars) {           
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+}
+
+input[type="button"] {
+    width: 80%;
+    height: 5rem;
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-left: 0.5rem;
+}
+
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+}
+
+#btn_changeUserInfo {
+    margin-right: 0.8rem;
+}

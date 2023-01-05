@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../main/js/captcha.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+    <body onload = "init_load()">
+        <img class="captchaImage">
+        <form action="http://localhost:3000/captcha/answer" method="get">
+            <input type="text" name="id" readonly="readonly" class="id">
+            <input name="captcha" style="border: 0.1rem solid gray !important;">
+            <button type="submit" style="height: 50;width: 50;"></button>
+        </form>
+    </body>
+</html> 

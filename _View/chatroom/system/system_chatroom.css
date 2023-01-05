@@ -1,5 +1,12 @@
+@font-face {
+  font-family: myFont;
+  src: url('src/jf-openhuninn-1.1.ttf');
+}
+
 * {
     font-size: 2.5vmin;
+    font-family: myFont;
+    background-color: white;
 }
 
 :root {
@@ -15,13 +22,10 @@ body {
     margin: auto;
 }
 
-text {
-    font-size: 1.5rem;
-}
-
 i {
     font-size: 0.9rem;
     cursor: pointer;
+    background-color: transparent;
     color: #aaaaaa;
 }
 
@@ -54,7 +58,7 @@ i {
     word-break: break-all;
     justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 0.5rem 1rem;
     background-color: white;
     border-bottom: 0.1rem solid #EEEEEE;
@@ -123,6 +127,15 @@ span {
     display: none;
 }
 
+
+.lbl_date {
+    font-size: 0.7rem;
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: #444444;
+}
+
 /* 自己這方的message bubble */
 .message_bubble_A {
     margin-top: 0.7rem;
@@ -133,15 +146,9 @@ span {
     align-items: flex-end;
 }
 
-.lbl_date {
-    font-size: 0.7rem;
-    margin-top: 0.3rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    color: #444444;
-}
-
 .message_bubble_A>span {
+    max-width: 70%;
+    word-break: break-all;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     background-color: var(--primary_color);
@@ -159,6 +166,8 @@ span {
 }
 
 .message_bubble_B>span {
+    max-width: 70%;
+    word-break: break-all;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     background-color: #EEEEEE;

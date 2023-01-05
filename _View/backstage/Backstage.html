@@ -1,0 +1,515 @@
+<html>
+
+<head>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 引入 font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="../backstage/Backstage.css">
+    <script type="text/javascript" src="../backstage/Backstage.js"></script>
+</head>
+
+<body onload="init_load()">
+    <div class="body">
+        <aside class="aside">
+            <h3 class="admin_name">管理員模式</h3>
+            <ul>
+                <!--
+                <li class="aside_list" id="users_list" onclick="show_users_list(this)">
+                    <svg class="aside_svg" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path
+                            d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z" />
+                    </svg>
+                    <a>使用者</a>
+                </li>
+                -->
+                <li class="aside_list" id="products_list" onclick="show_products_list(this)">
+                    <svg class="aside_svg" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path
+                            d="M190.5 68.8L225.3 128H224 152c-22.1 0-40-17.9-40-40s17.9-40 40-40h2.2c14.9 0 28.8 7.9 36.3 20.8zM64 88c0 14.4 3.5 28 9.6 40H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H480c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32H438.4c6.1-12 9.6-25.6 9.6-40c0-48.6-39.4-88-88-88h-2.2c-31.9 0-61.5 16.9-77.7 44.4L256 85.5l-24.1-41C215.7 16.9 186.1 0 154.2 0H152C103.4 0 64 39.4 64 88zm336 0c0 22.1-17.9 40-40 40H288h-1.3l34.8-59.2C329.1 55.9 342.9 48 357.8 48H360c22.1 0 40 17.9 40 40zM32 288V464c0 26.5 21.5 48 48 48H224V288H32zM288 512H432c26.5 0 48-21.5 48-48V288H288V512z" />
+                    </svg>
+                    <a>
+                        商品
+                    </a>
+                </li>
+                <li class="aside_list" id="orders_list" onclick="show_orders_list(this)">
+                    <svg class="aside_svg" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 576 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path
+                            d="M0 80v48c0 17.7 14.3 32 32 32H48 96V80c0-26.5-21.5-48-48-48S0 53.5 0 80zM112 32c10 13.4 16 30 16 48V384c0 35.3 28.7 64 64 64s64-28.7 64-64v-5.3c0-32.4 26.3-58.7 58.7-58.7H480V128c0-53-43-96-96-96H112zM464 480c61.9 0 112-50.1 112-112c0-8.8-7.2-16-16-16H314.7c-14.7 0-26.7 11.9-26.7 26.7V384c0 53-43 96-96 96H368h96z" />
+                    </svg>
+                    <a>
+                        訂單
+                    </a>
+                </li>
+                <li class="aside_list" id="service_list" onclick="show_service_list(this)">
+                    <svg class="aside_svg" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path
+                            d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                    </svg>
+                    <a>
+                        客服
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="content">
+            <header class="header">
+                <button id="asidemenu_btn" onclick="toggle_aside()">
+                    <svg class="asidemenu_svg" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path
+                            d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                    </svg>
+                </button>
+                <div class="header_menu">
+                    <div class="search_div">
+                        <div class="search_btn">
+                            <button id="id_search_btn" onclick="search()">
+                                <svg class="search_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path
+                                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <input class="search_input" placeholder="Search" onchange="reload()">
+                    </div>
+                </div>
+            </header>
+            <section class="main">
+                <!-- 使用者 -->
+                <!--
+                <div class="content_div" id="users_div">
+                    <h1>
+                        使用者名單
+                    </h1>
+                    <div class="table_div">
+                        <table class="content_table" border="1">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        使用者名稱
+                                    </th>
+                                    <th>
+                                        訂單數量
+                                    </th>
+                                    <th>
+                                        消費金額
+                                    </th>
+                                    <th>
+                                        上次登入日期
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img class="user_img">
+                                        1123456789123456789123456789
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        4
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        4
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span class="table_foot">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <button>
+                                            <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>1</button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </span>
+                    </div>
+                </div>
+                -->
+                <!-- 商品 -->
+                <div class="content_div" id="products_div">
+                    <h1>商品清單</h1>
+                    <div class="table_div">
+                        <table class="content_table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        商品序號
+                                    </th>
+                                    <th>
+                                        商品分類
+                                    </th>
+                                    <th>
+                                        商品縮圖
+                                    </th>
+                                    <th>
+                                        商品名稱
+                                    </th>
+                                    <th>
+                                        商品規格
+                                    </th>
+                                    <th>
+                                        商品數量
+                                    </th>
+                                    <th>
+                                        商品金額
+                                    </th>
+                                    <th>
+                                        修改
+                                    </th>
+                                    <th>
+                                        刪除
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="products_table">
+                                <tr class="tr_class" id="tr1"></tr>
+                                <tr class="tr_class" id="tr2"></tr>
+                                <tr class="tr_class" id="tr3"></tr>
+                                <tr class="tr_class" id="tr4"></tr>
+                                <tr class="tr_class" id="tr5"></tr>
+                                <tr class="tr_class" id="tr6"></tr>
+                                <tr class="tr_class" id="tr7"></tr>
+                                <tr class="tr_class" id="tr8"></tr>
+                                <tr class="tr_class" id="tr9"></tr>
+                                <tr class="tr_class" id="tr10"></tr>
+                            </tbody>
+                        </table>
+                        <span class="table_foot">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <button onclick="last_ten_product()">
+                                            <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="product_table">1</button>
+                                    </li>
+                                    <li>
+                                        <button onclick="next_ten_product()">
+                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </span>
+                    </div>
+                    <h1>新增商品</h1>
+                    <div class="create_div">
+                        <label>
+                            <span>商品名稱</span>
+                            <input id="new_name">
+                        </label>
+                        <label>
+                            <span>商品簡要</span>
+                            <input id="new_product_desscription">
+                        </label>
+                        <label>
+                            <span>商品細節</span>
+                            <input id="new_product_detail">
+                        </label>
+                        <label>
+                            <span>商品分類</span>
+                            <select id="new_product_cate"></select>
+                        </label>
+                        <label>
+                            <span>商品價格</span>
+                            <input id="new_price">
+                        </label>
+                        <label>
+                            <span>商品圖片</span>
+                            <input id="new_img" type="file" accept=".jpg,.png" multiple="multiple">
+                        </label>
+                        <div class="newproduct_spec">
+                            <span id="new_spec_div">
+                                <button onclick="newSpec()">
+                                    +
+                                </button>
+                                <button onclick="deleteSpec()">
+                                    -
+                                </button>
+                            </span>
+                            <div id="spec_div1">
+                                <label>
+                                    <span>商品規格</span>
+                                    <input id="new_spec1">
+                                </label>
+                                <label>
+                                    <span>商品數量</span>
+                                    <input id="new_stock1">
+                                </label>
+                            </div>
+                        </div>
+                        <span class="create_foot">
+                            <button onclick="create_product()">確定</button>
+                            <button onclick="cancel_product()">清除</button>
+                        </span>
+                    </div>
+                    <h1>新增分類</h1>
+                    <div class="create_cate">
+                        <label>
+                            <span>分類名稱</span>
+                            <input id="new_cate_name">
+                        </label>
+                        <label>
+                            <span>上層分類</span>
+                            <select id="new_cate_parent"></select>
+                        </label>
+                        <span class="create_foot">
+                            <button onclick="create_cate()">確定</button>
+                            <button onclick="cancel_cate()">清除</button>
+                        </span>
+                    </div>
+                </div>
+                <!--更改商品頁面-->
+                <div class="alter_window_div">
+                    <button id="cancel_btn" onclick="alter_cancel()">
+                        <svg id="alter_cancel_svg" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                            <path
+                                d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                        </svg>
+                    </button>
+                    <div>
+                        <h1 id="alter_title"></h1>
+                        <div id="checkbox_div">
+                            <label>
+                                <input id="checkbox_name_cate_price" type="checkbox" onclick="show_div(this)">
+                                <span>商品名稱、分類及價格</span>
+                            </label>                            
+                            <label>
+                                <input id="checkbox_description" type="checkbox" onclick="show_div(this)">
+                                <span>商品摘要</span>
+                            </label>
+                            <label>
+                                <input id="checkbox_detail" type="checkbox" onclick="show_div(this)">
+                                <span>商品詳細資料</span>
+                            </label>
+                            <label>
+                                <input id="checkbox_img" type="checkbox" onclick="show_div(this)">
+                                <span>商品圖片</span>
+                            </label>
+                            <label>
+                                <input id="checkbox_spec" type="checkbox" onclick="show_div(this)">
+                                <span>商品規格</span>
+                            </label>
+                        </div>
+                        <div class="table_div" id="alter_table_div">
+                            <table class="content_table" id="alter_table" border="1">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>原資料</th>
+                                        <th>新資料</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="alter_row" id="alter_row_name">
+                                        <th>
+                                            商品名稱
+                                        </th>
+                                        <td id="original_name">
+
+                                        </td>
+                                        <td>
+                                            <input id="alter_name">
+                                        </td>
+                                    </tr>
+                                    <tr class="alter_row" id="alter_row_cate">
+                                        <th>
+                                            商品分類
+                                        </th>
+                                        <td id="original_cate">
+
+                                        </td>
+                                        <td>
+                                            <select id="alter_cate"></select>
+                                        </td>
+                                    </tr>
+                                    <tr class="alter_row" id="alter_row_price">
+                                        <th>
+                                            商品價格
+                                        </th>
+                                        <td id="original_price">
+                                        </td>
+                                        <td>
+                                            <input id="alter_price">
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <div class="alter_div" id="alter_description">
+                                <h3>商品摘要</h3>
+                                <p id="original_description"></p>
+                                <input id="alter_description_input">
+                            </div>
+                            <div class="alter_div" id="alter_detail">
+                                <h3>商品詳細資料</h3>
+                                <span>
+                                    <p id="original_detail"></p>
+                                </span>
+                                <input id="alter_detail_input">
+                            </div>
+                            <div class="alter_div" id="alter_img">
+                                <h3>商品圖片</h3>
+                                <div id="original_img"></div>
+                                <input id="alter_img_input" type="file" accept=".jpg,.png" multiple="multiple">
+                            </div>
+                            <div class="alter_div" id="alter_spec">
+                                <h3>商品規格/數量</h3>
+                                <span id="new_spec_div">
+                                    <button onclick="alter_newSpec()">
+                                        +
+                                    </button>
+                                    <button onclick="alter_deleteSpec()">
+                                        -
+                                    </button>
+                                </span>
+                                <div id="alter_spec_div">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <span class="alter_span">
+
+                        </span>
+                    </div>
+                    <button id="alter_btn" onclick="alter_yes()">確定</button>
+                </div>
+
+
+                <!-- 訂單 -->
+                <div class="content_div" id="orders_div">
+                    <h1>
+                        訂單清單
+                    </h1>
+                    <div class="table_div">
+                        <table class="content_table" border="1">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        訂單編號
+                                    </th>
+                                    <th>
+                                        商品縮圖
+                                    </th>
+                                    <th>
+                                        商品名稱
+                                    </th>
+                                    <th>
+                                        商品數量
+                                    </th>
+                                    <th>
+                                        消費金額
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="order_list_admin">
+                            </tbody>
+                        </table>
+                        <span class="table_foot">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <button>
+                                            <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>1</button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 客服聊天室 -->
+                <div class="content_div" id="chatroom_div">
+                    <iframe src="/system" height="100%" width="100%"></iframe>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

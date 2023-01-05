@@ -1,4 +1,5 @@
 var userID = "";
+var login = false;
 var firsttimeOpenChatroom = 0;
 
 // 初始化及載入 socket.io
@@ -13,7 +14,8 @@ var messageRecordOffset = 0;
 /* IIFE (Immediately Invoked Function Expression) function 自我調用function */
 /* 會自己執行 這邊用來產生聊天室的顯示介面 並先藏起來 等按下按鈕才會跳出 */
 var chatroom_div = function test() {
-  /* 動態產生聊天室按鈕並置於畫面右下角，方便import */
+  console.log(Cookies.get("userID"));
+  // 動態產生聊天室按鈕並置於畫面右下角，方便import
   var btn_chatroom = $("<button class='btn_chatroom' onclick='openChatroom()'> </button>");
   $("body").append(btn_chatroom);
   var chatroom = $("<span class='chatroom' id='chatroom'> </span>");
@@ -38,13 +40,22 @@ var chatroom_div = function test() {
     <div id='type_div' class='type_div'>
       <textarea id='type_area' placeholder='輸入訊息...' class='type_area'></textarea>
       <span>
-        <label id='lbl_upload' for='btn_upload'>
-          <img id='imgbtn_upload' src='./src/upload-file.svg'/>
-        </lable>
         <input type='file' id='btn_upload' />
       </span>
     </div>`
   );
+
+  /*var type_div = $(`  
+    <div id='type_div' class='type_div'>
+      <textarea id='type_area' placeholder='輸入訊息...' class='type_area'></textarea>
+      <span>
+        <label id='lbl_upload' for='btn_upload'>
+          <img id='imgbtn_upload'/>
+        </lable>
+        <input type='file' id='btn_upload' />
+      </span>
+    </div>`
+  );*/
 
   // 將動態建立的元件各自塞到他們該去ㄉ地方
   $(chatroom).append(title_bar);
@@ -61,11 +72,25 @@ var chatroom_div = function test() {
     }
   });
 
-  // 根據cookie抓取目前登入的使用者
-  // 用正規表示式撈出userID
-  userID = Cookies.get("userID").match(/^s:(.*)\..*$/)[1];
+  if (Cookies.get("userID")) {
+    // 若已經登入，則根據cookie抓取目前登入的使用者
+    // 用正規表示式撈出userID
+    userID = Cookies.get("userID").match(/^s:(.*)\..*$/)[1];
+    $("#type_div").show();
+    $("#tmp_message_div").remove();
+    login = true;
+  } else {
+    // 若尚未登入，則關閉聊天室
+    $("#type_div").hide();
+    $(".message_div").html(`
+      <div id='tmp_message_div' style='display: flex; justify-content: center; align-items: center; height: 100%'>
+        <t style='font-size: 1.5rem;'> 請 <a class='black_word' href='/login' style='color: blue; font-size: 1.5rem;'> 登入 </a> 以使用客服聊天功能 </t>
+      </div>
+    `);
+    login = false;
+  }
 
-  /* message_div 向上捲動至頂時動態載入更早前的聊天紀錄 */
+  // message_div 向上捲動至頂時動態載入更早前的聊天紀錄 
   $(message_div).scroll(() => {
     var mScrollHeight = document.getElementById('message_div').scrollHeight
     if ($(message_div).scrollTop() < mScrollHeight / 2) {
@@ -95,7 +120,17 @@ var chatroom_div = function test() {
       $('#message_div').animate({ scrollTop: $('#message_div').prop("scrollHeight") }, 500);
     }
   })
+
+  socket.on('new_message_from_system', (result) => {
+    if (result.length > 0) {
+      messageRecord.unshift(result);
+      updateMessageToChatroom(messageRecord);
+      $('#message_div').animate({ scrollTop: $('#message_div').prop("scrollHeight") }, 500);
+    }
+  })
+
 }();
+
 
 function sendMessage() {
   var msg = $("#type_area").val();
@@ -106,14 +141,33 @@ function sendMessage() {
 
 function openChatroom() {
   toggleChatroom();
-  /* 第一次打開聊天室時先撈 messageRecordAmount 筆資料 */
-  if ($("#chatroom").hasClass("open") && firsttimeOpenChatroom < 1) {
-    var option = [messageRecordAmount, 0];  // amount offset;
-    messageRecordOffset += messageRecordAmount;  // 更新offset
-    console.log("option", option);
-    firsttimeOpenChatroom = 1;
-    socket.emit('get_chat_record', userID, option);
+
+  if (Cookies.get("userID")) {
+    // 若已經登入，則根據cookie抓取目前登入的使用者
+    // 用正規表示式撈出userID
+    userID = Cookies.get("userID").match(/^s:(.*)\..*$/)[1];
+    $("#type_div").show();
+    $("#tmp_message_div").remove();
+
+    /* 第一次打開聊天室時先撈 messageRecordAmount 筆資料 */
+    if ($("#chatroom").hasClass("open") && firsttimeOpenChatroom < 1) {
+      var option = [messageRecordAmount, 0];  // amount offset;
+      messageRecordOffset += messageRecordAmount;  // 更新offset
+      console.log("option", option);
+      firsttimeOpenChatroom = 1;
+      socket.emit('get_chat_record', userID, option);
+    }
+
+  } else {
+    // 若尚未登入，則關閉聊天室
+    $("#type_div").hide();
+    $(".message_div").html(`
+      <div id='tmp_message_div' style='display: flex; justify-content: center; align-items: center; height: 100%'>
+        <t style='font-size: 1.5rem;'> 請 <a class='black_word' href='/login' style='color: blue; font-size: 1.5rem;'> 登入 </a> 以使用客服聊天功能 </t>
+      </div>
+    `);
   }
+
 }
 
 function toggleChatroom() {

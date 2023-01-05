@@ -1,19 +1,25 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
-@font-face {
-    font-family: myFont;
-    src: url('src/jf-openhuninn-1.1.ttf');
+/*載入Google字型*/
+* {
+    font-size: 2vmin;
 }
 
-/*載入Google字型*/
 html {
     margin: 0;
     /*外矩值歸零*/
     padding: 0;
     /*內矩值歸零*/
-    font-family: myFont;
-    font-weight: 300;
-    font-size: 1.8vmin;
+}
+
+.logo {
+    width: 3.5rem;
+    margin: 1rem;
+}
+
+.navbar {
+    display: flex !important;
+    justify-content: space-evenly !important;
 }
 
 body {
@@ -36,13 +42,29 @@ a:visited {
     /*顏色*/
 }
 
-a:hover {
-    color: #999;
-    /*顏色*/
+a.black_word:hover {
+    color: red !important;
 }
 
-.mbtn:hover {
-    color: #fff !important;
+.search {
+    margin-right: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 0 !important;
+    color: black !important;
+}
+
+.dropdown-item:hover {
+    color: black !important;
+}
+
+.fa-user {
+    font-size: 1rem;
+}
+
+.nav_link:hover {
+    color: red !important;
 }
 
 h2,
@@ -51,11 +73,8 @@ h2,
     /*顏色*/
 }
 
-@media screen and (max-width: 768px) {
-    .navbar-brand img {
-        width: 60px;
-        /*寬度*/
-    }
+#div_userDropdown>a:active {
+    background-color: #aaa;
 }
 
 .product-categories>a {
@@ -109,6 +128,22 @@ h2,
     /*顏色*/
 }
 
+#nav_drop {
+    display: none;
+}
+
+@media screen and (max-width: 991px) {
+
+    ul.navbar-nav,
+    .navbar-toggler {
+        display: none;
+    }
+
+    #nav_drop {
+        display: inherit;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .send-btn {
         width: 100%;
@@ -119,4 +154,179 @@ h2,
 .page-content {
     min-height: 700px;
     /*最小高度*/
+}
+
+.sidebar-product-list {
+    padding-top: 1rem;
+    /*上方內矩*/
+    border-bottom: 1px solid #e9e9e9;
+    /*下方邊框樣式*/
+}
+
+.product-list-img {
+    width: 50px;
+    /*寬度*/
+    height: 50px;
+    /*高度*/
+    margin: .2rem;
+    /*四個方向外矩*/
+    opacity: 1;
+    /*透明度100%*/
+    border: 1px solid #0099d1;
+    /*四個方向邊框樣式*/
+}
+
+.sidebar-product-list:hover .product-list-img {
+    opacity: .5;
+    /*透明度50%*/
+}
+
+.remove {
+    display: inline-block;
+    width: 20px;
+    /*寬度*/
+    height: 20px;
+    /*高度*/
+    text-align: center;
+    /*文字置中對齊*/
+    line-height: 20px;
+    /*行高*/
+    background-color: #FF0000;
+    /*背景顏色*/
+    border-radius: 50%;
+    /*圓角*/
+    cursor: pointer;
+    /*滑鼠游標改為手指*/
+}
+
+.remove:hover {
+    background-color: rgb(172, 2, 2);
+    /*背景顏色*/
+}
+
+.sidebar-product-category {
+    display: block;
+    margin: 0;
+    /*外矩歸零*/
+    padding: 0;
+    /*內矩歸零*/
+    list-style: none;
+    /*清除清單符號*/
+}
+
+.sidebar-product-category>li {
+    display: block;
+    padding: .5rem 0;
+    /*上下內矩為0.5rem，左右為0*/
+    border-bottom: 1px solid #e9e9e9;
+    /*向下邊框樣式*/
+}
+
+.sidebar-product-category>li>a {
+    color: rgb(43, 43, 43);
+    /*顏色*/
+}
+
+.sidebar-product-category>li>a:hover {
+    color: #999;
+    /*顏色*/
+}
+
+.product-remove {
+    width: 10%;
+    /*寬度*/
+    height: 100%;
+}
+
+.product-remove>i {
+    font-size: 2rem;
+}
+
+.product-remove>i:hover {
+    color: rgb(245, 87, 87);
+}
+
+div[class="product"] {
+    padding: 1.5rem;
+}
+
+.product-thumbnail {
+    width: 15%;
+    /*寬度*/
+}
+
+.product-name {
+    width: auto;
+    /*寬度*/
+}
+
+.product-spec {
+    width: auto;
+}
+
+.product-price,
+.product-quantity,
+.product-subtotal {
+    width: 15%;
+    /*寬度*/
+}
+
+.product-quantity input {
+    width: 50%;
+    /*寬度*/
+}
+
+@media screen and (max-width: 768px) {
+    .product-thumbnail {
+        display: none;
+        /*將區塊隱藏*/
+    }
+
+    .product-quantity input {
+        width: 100%;
+        /*寬度*/
+    }
+}
+
+.containerI {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    padding: 20px;
+    margin-left: 5%;
+    border: 1px #ccc solid;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    .category {
+        display: none;
+    }
+}
+
+.card-img-top {
+    width: 15rem;
+    height: 15rem;
+    max-width: 350px;
+    max-height: 350px;
+    align-self: center;
+}
+
+#product-display {
+    white-space: pre-line;
+}
+
+.page-item {
+    height: 100% !important;
+}
+
+.format-pre pre {
+    font-size: 1.5rem;
 }

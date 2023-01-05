@@ -8,7 +8,7 @@ html {
   font-size: 1.8vmin;
 }
 /* show chatroom and chatroom button if screen is big enough */
-@media (min-width: 800px) and (min-height: 400px) {
+@media (min-width: 750px) and (min-height: 400px) {
   /* variables setting */
   :root {
     --btn_chatroom_size: 8vmin;
@@ -127,8 +127,10 @@ html {
   }
 
   .message_bubble_A > span {
+    max-width: 70%;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
+    word-break: break-all;
     background-color: var(--primary_color);
     color: white;
   }
@@ -144,9 +146,11 @@ html {
   }
 
   .message_bubble_B > span {
+    max-width: 70%;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     background-color: #EEEEEE;
+    word-break: break-all;
   }
 
   .type_div {
@@ -180,6 +184,7 @@ html {
 
   #imgbtn_upload {
     width: 2rem;
+    content: url('./src/upload-file.svg');
   }
 
   #btn_upload {
@@ -237,7 +242,7 @@ html {
 
 
 /* hide chatroom if screen is too small */
-@media (max-width: 800px) or (max-height: 400px) {
+@media (max-width: 750px) or (max-height: 400px) {
   .chatroom > *, .btn_chatroom {
     transform: scale(0);
   }

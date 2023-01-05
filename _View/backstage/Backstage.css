@@ -1,0 +1,457 @@
+:root {
+    font-size: 1.25vmin;
+}
+
+ul{
+    padding: 0;
+}
+.body{
+    display: flex;
+}
+
+.aside{
+    display: block;
+    height: 100vh;
+    width: 18rem;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    box-shadow: 8px 4px 6px -1px rgb(0 0 0 / 10%)
+}
+.admin_name{
+    padding-left: 1rem;
+}
+.aside_list{
+    list-style: none;
+    padding: 1rem 2rem;
+}
+.aside_list:hover{
+    background-color: #ccc;
+}
+.aside_svg{
+    width: 1.5rem;
+    padding-right: 1rem;
+}
+
+.content{
+    width: 100%;
+}
+.header{
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;    
+    box-shadow: 8px 4px 6px -1px rgb(0 0 0 / 10%)
+}
+.head_menu{
+    display: flex;
+    width: 100%;
+}
+#id_search_btn{
+    border: 0;
+    padding: 0;
+}
+#id_search_btn:hover{
+    background-color: #ccc;
+}
+.search_div{
+    width: 100%;
+    position: relative;
+}
+
+.search_btn{
+    display: flex;    
+    position: absolute;
+    top: 0.2rem;
+    left: 1rem;
+}
+#asidemenu_btn{
+    display: none;
+    border: 0;
+    background-color: white;
+}
+.asidemenu_svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    
+}
+.search_svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color:inherit;
+}
+.search_input{
+    padding-left: 4rem;
+    width: 100%;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0px;
+    background-color: rgba(148, 148, 148, 0.1);
+}
+
+.main{
+    max-width: 80%;
+    height: auto;
+    padding: 1rem 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 8px 4px 20px rgb(0 0 0 / 10%);
+    --bg-opacity: 1;
+    background-color: rgba(148, 148, 148, 0.1);    
+}
+
+.main.chatroom {
+    width: 95%;
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+    margin-top: 1rem;
+    box-shadow: 0 0 1rem -0.5rem rgba(0,0,0,0.42);
+    background-color: transparent;
+}
+
+/*共有*/
+.content_div{
+    display: flex;
+    flex-direction: column;
+}
+
+.content_div[id="chatroom_div"]{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.table_img{
+    width: 4rem;
+    height: 4rem;
+}
+.table_div{
+    width: 100%;
+    border-radius: 12px ;
+    border: 1px #ccc solid;
+    align-self: center;
+}
+.content_table{
+    text-align: center;
+    width: 100%;    
+    border-collapse:collapse;    
+    border: 0;
+    
+}
+td,th{
+    padding: 1rem 2rem;    
+    border: 0;
+}
+tr{    
+    border-bottom: 1px #ccc solid;
+}
+/*  users   */
+
+
+
+
+
+
+
+
+.table_foot ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.table_foot li{
+    list-style: none;
+}
+.table_foot button{
+    border: 0;
+}
+.table_foot button:hover{
+    background-color: #ccc;
+}
+.table_foot svg{
+    width: 1rem;
+}
+
+label:has(input[type="checkbox"]) {
+    display: flex;
+    margin: 0 1rem;
+}
+
+/*product*/
+.table_btn {
+    font-size: 1.25rem;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+}
+
+.table_btn:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.table_btn_svg{
+    width: 1rem;
+    height: 1rem;
+}
+.create_div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px ;
+    border: 1px #ccc solid;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.create_div input ,select{
+    width: 100%;
+    margin-top: 1rem;
+    border: 1px #ccc solid;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+.create_div label{
+    margin-top: 1rem;
+}
+#new_spec_div {
+    display: block;
+    margin-bottom: 1rem;
+}
+.newproduct_spec {    
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px #ccc solid;
+    border-radius: 0.25rem;
+    padding: 1rem 2rem;
+}
+
+.newproduct_spec input{    
+    margin-bottom: 1rem;
+}
+.spec_div{
+    border-top: 0.125rem purple dashed;
+    padding-top: 1rem;
+}
+.create_foot{
+    align-self: flex-end;
+}
+/*新分類*/
+.create_cate{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px ;
+    border: 1px #ccc solid;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+.create_cate input ,select{
+    width: 100%;
+    margin-top: 1rem;
+    border: 1px #ccc solid;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+/*更改商品資料*/
+#cancel_btn{
+    /*
+    display: none;
+    position: Fixed ;
+    top: 24vh;
+    left: 70vw; */
+    border: 0;
+    background-color: white;
+    float: right;
+}
+#cancel_btn:hover{
+    background-color: #ccc;
+}
+#alter_cancel_svg{
+    width: 0.75rem;
+}
+#alter_btn{
+    
+    display: none;    
+    /*
+    position: Fixed ;
+    top: 75vh;
+    left: 65vw; */
+    float: right;
+    margin: 1rem 0 0 0;
+}
+#alter_btn:hover{
+    background-color: #ccc;
+}
+.alter_window_div{
+    display: none;
+    position: Fixed ;
+    top: 20vh;
+    left: 25vw;
+    width: 50vw;
+    height: 60vh;
+    padding: 2.5rem;
+    border: 0.125rem purple solid;
+    border-radius: 2.5rem;
+    box-sizing: border-box;
+    background-color: white;
+
+    
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+
+    transform: scale(0);
+}
+.alter_window_div#open{
+    animation: open 0.25s forwards;
+}
+.alter_window_div#close{
+    animation: close 0.25s forwards;
+}
+@keyframes open {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+@keyframes close {
+0% {
+    transform: scale(1);
+}
+100% {
+    transform: scale(0);
+}
+}
+.alter_window_div input{
+    padding: 0 0 0 1rem;
+}
+#checkbox_div{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+#alert_table{
+    width: 100%;    
+    border-collapse:collapse;    
+    border: 0;        
+}
+#alter_row_price{
+    border: 0;
+}
+.alter_span button{
+    justify-content: end;
+}
+#alter_table_div{
+    display: none;
+}
+#alter_table  input{
+    
+    width: 100%;
+    height: 2rem;
+    border: 1px #ccc solid;
+    border-radius: 0.25rem;
+}
+#alter_img{
+    padding: 0;
+}
+#alter_table  select{
+    width: 100%;
+    height: 2rem;
+    margin: 0;
+}
+.alter_div{
+    display: none;
+    border: 1px #ccc solid;
+    border-radius: 12px ;
+    margin-top: 1rem;
+    padding: 0 1rem 1rem 1rem;
+    overflow-x: auto;
+}
+#alter_description_input,#alter_detail_input{    
+    width: 100%;
+    height: 20%;
+    border: 1px #ccc solid;
+    border-radius: 0.25rem;
+}
+#original_img{
+    display: flex;
+    flex-wrap: wrap;
+}
+.alter_img{
+    width: 10rem;
+}
+#alter_img{
+    border: 1px #ccc solid;
+    margin-top: 1rem;
+}
+#alter_spec_div{
+    display: flex;
+    flex-direction: column;
+    border: 1px #ccc solid;
+    border-radius: 12px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    min-width: 120px;
+}
+.spec_label{
+    padding: 1rem 0 0 0;
+}
+.spec_label input{
+    width:50% ;
+}
+.spec_input_div{
+    display: flex;
+    flex-wrap: wrap;
+}
+/*
+.alter_span{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}*/
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+@media screen  and ( max-width: 1024px ) {
+    .content_table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    }
+}
+@media screen  and ( max-width: 768px ) {
+    #asidemenu_btn{
+        display: block;        
+    }
+    .aside{
+        display: none;
+        position: absolute;
+        background-color: white;
+        top: 10vh;
+    }
+    .header{
+        justify-content:space-evenly;
+    }
+    #cancel_btn{
+        left: 65vw; 
+    }
+    #alter_btn{
+        left: 60vw; 
+    }
+}

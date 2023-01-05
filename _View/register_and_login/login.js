@@ -23,6 +23,18 @@ $(document).ready(() => {
         window.location.href = "./register";
     })
 
+    $("#btnForgetPWD").click(() => {
+        window.location.href="http://localhost:3000/forgetpwd";
+    })
+
+    // 設定在輸入框按下enter時，會觸發登入按鈕事件
+    $("#usernameBox, #pwdBox").keypress((e) => {
+        if (e.which === 13 && !e.shiftKey) {
+            $("#btnLogin").click();
+            e.preventDefault();
+        }
+    });
+
     // post 資料到登入介面
     $("#btnLogin").click(() => {
         var userData = {
@@ -78,7 +90,7 @@ $(document).ready(() => {
                             width: "50vw",
                             confirmButtonText: '確定'
                         }).then((result) => {
-                            if(result.isConfirmed) window.location.href = "/system";
+                            if(result.isConfirmed) window.location.href = "http://localhost:3000/admin";
                         })
                     }
                 },
