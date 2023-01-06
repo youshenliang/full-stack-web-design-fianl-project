@@ -71,3 +71,18 @@ function logout() {
 function resetPwd() {
     window.location.href = "http://localhost:3000/resetpwd";
 }
+
+function submit_contact() {
+    if ($(".cont#name").val().length < 1 || $(".cont#e-mail").val().length < 1 || $(".cont#e-mail").val().length < 1 || $(".cont#tel").val().length < 1 || $(".cont#business").val().length < 1 || $(".cont#message").val().length < 1) {
+        Swal.fire({
+            icon: 'error',
+            title: '欄位請勿留空'
+        })
+    } else {
+        Swal.fire({
+            icon: 'success',
+            title: '信件已成功寄出，我們將盡快與您聯絡！'
+        })
+        $(".cont").val("");
+    }
+}
