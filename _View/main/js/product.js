@@ -5,6 +5,8 @@
 
     //$(".product-name").textContent("ABC");*/
 
+const e = require("express");
+
 
 /*
 var product = {
@@ -302,7 +304,8 @@ function add_cart(){
     }
 }
 function purchase(){
-    if (choose_spec!=0){
+    console.log("chsp:", choose_spec);
+    if (choose_spec && choose_spec.length > 0){
         /*console.log(product.product_spec[choose_spec.slice(4)-1]);
         console.log($(".stock_selector").val())
         var purchase_spec = product.product_spec[choose_spec.slice(4)-1];
@@ -313,14 +316,24 @@ function purchase(){
             purchase_spec:  product.product_spec[choose_spec.slice(4)-1],
             purchasebtn:    $(".stock_selector").val(),
         }
-        console.log(purchasebtn)
-        Toast.fire({
-            icon: 'success',
-            title:'跳轉到購買頁面',        
-        })  
+        console.log(purchasebtn);
+
+        if(USER_ID > 0) {
+            Toast.fire({
+                icon: 'success',
+                title:'跳轉到購買頁面',
+            })
+        } else{
+            Swal.fire({
+                icon: 'warning',
+                text: '您尚未登入，讓我們帶您到登入頁面',
+            }).then(() => {
+                window.location.href = "http://localhost:3000/login";
+            })
+        }
     }
     else{
-        Toast.fire({
+        Swal.fire({
             icon: 'error',
             title:'尚未選取商品規格',        
         })    
